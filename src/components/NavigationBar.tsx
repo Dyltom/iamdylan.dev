@@ -24,15 +24,15 @@ const NavigationBar: React.FC = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" sx={{ flexGrow: 1 }} color="secondary">
           <span ref={el} />
         </Typography>
         <Box sx={{ display: 'flex', flexGrow: 0 }}>
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">About</Button>
-          <Button color="inherit">Portfolio</Button>
-          <Button color="inherit">Blog</Button>
-          <Button color="inherit">Contact</Button>
+          <Button color="secondary">Home</Button>
+          <Button color="secondary">About</Button>
+          <Button color="secondary">Portfolio</Button>
+          <Button color="secondary">Blog</Button>
+          <Button color="secondary">Contact</Button>
         </Box>
       </Toolbar>
     </AppBar>

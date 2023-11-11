@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
       }}
     >
       <Container maxWidth="sm">
-        <Typography variant="body1" align="center">
+        <Typography variant="body1" align="center" color="secondary">
           Dylan Henderson © {currentYear}
         </Typography>
       </Container>
