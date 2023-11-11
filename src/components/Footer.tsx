@@ -1,5 +1,4 @@
 import { Box, Container, Typography } from '@mui/material';
-import React from 'react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -9,9 +8,9 @@ const Footer: React.FC = () => {
       component="footer"
       sx={{
         mt: 'auto',
-        py: 2, // padding top and bottom
-        backgroundColor: 'primary.main', // use your theme's primary color
-        color: 'primary.contrastText', // ensures text color is readable on primary color
+        py: 2,
+        backgroundColor: 'primary.main',
+        color: 'primary.contrastText',
       }}
     >
       <Container maxWidth="sm">

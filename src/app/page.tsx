@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
 import Footer from '../components/Footer';
-import NavigationBar from '../components/NavigationBar';
+import NavigationBar from '../components/NavigationBar/NavigationBar';
 import theme from '../styles/theme';
 
 export default function Home() {
