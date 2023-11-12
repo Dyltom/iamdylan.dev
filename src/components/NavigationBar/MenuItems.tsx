@@ -1,18 +1,24 @@
 import { Box, Button } from '@mui/material';
+import { useRouter } from 'next/navigation';
+import { links } from '../../utils/consts';
 
 const MenuItems: React.FC = () => {
+  const router = useRouter();
+
   return (
     <Box sx={{ display: 'flex', flexGrow: 0 }}>
-      {['Home', 'About', 'Portfolio', 'Blog', 'Contact'].map((text) => (
-        <Button
-          key={text}
-          color="secondary"
-          href={`#${text.toLowerCase()}`}
-          sx={{ textTransform: 'none' }}
-        >
-          {text}
-        </Button>
-      ))}
+      {links.map(({ text, href }) => {
+        return (
+          <Button
+            key={text}
+            color="secondary"
+            onClick={() => router.push(href)}
+            sx={{ textTransform: 'none' }}
+          >
+            {text}
+          </Button>
+        );
+      })}
     </Box>
   );
 };

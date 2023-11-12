@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Box,
   Button,
@@ -5,10 +7,11 @@ import {
   List,
   ListItem,
   ListItemButton,
-  useTheme,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { Fragment } from 'react';
+import { links } from '../../utils/consts';
+import theme from '../ThemeRegistry/theme';
 
 interface DrawerContentProps {
   toggleDrawer: (
@@ -17,7 +20,6 @@ interface DrawerContentProps {
 }
 
 const DrawerContent: React.FC<DrawerContentProps> = ({ toggleDrawer }) => {
-  const theme = useTheme();
   const router = useRouter();
 
   return (
@@ -32,8 +34,8 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ toggleDrawer }) => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {['Home', 'About', 'Portfolio', 'Blog', 'Contact'].map(
-          (text, index, array) => (
+        {links.map(({ text, href }, index, array) => {
+          return (
             <Fragment key={text}>
               <ListItem disablePadding>
                 <ListItemButton
@@ -44,7 +46,7 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ toggleDrawer }) => {
                 >
                   <Button
                     color="secondary"
-                    onClick={() => router.push(`/#${text.toLowerCase()}`)}
+                    onClick={() => router.push(href)}
                     sx={{
                       textTransform: 'none',
                       width: '100%',
@@ -58,8 +60,8 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ toggleDrawer }) => {
                 <Divider sx={{ bgcolor: theme.palette.secondary.main }} />
               )}
             </Fragment>
-          )
-        )}
+          );
+        })}
       </List>
     </Box>
   );

@@ -1,17 +1,13 @@
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
+'use client';
 
+import { AppBar, Toolbar, Typography, useMediaQuery } from '@mui/material';
+
+import theme from '../ThemeRegistry/theme';
 import DrawerComponent from './Drawer';
 import MenuItems from './MenuItems';
 import TypedText from './TypedText';
 
 const NavigationBar: React.FC = () => {
-  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (

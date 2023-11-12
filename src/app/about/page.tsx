@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <Box sx={{ display: 'flex' }}>
-      <div>Hi</div>
+      <div>About</div>
     </Box>
   );
 }

@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+// RootLayout.tsx
+import { Box } from '@mui/material';
+import Footer from '../components/Footer';
+import NavigationBar from '../components/NavigationBar';
+import ThemeRegistry from '../components/ThemeRegistry/ThemeRegistry';
 
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Dylan Henderson',
   description:
     'Dylan Henderson is a software engineer based in Melbourne, VIC.',
@@ -16,7 +17,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <ThemeRegistry>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateRows: 'auto 1fr auto', // Header, content, footer
+              minHeight: '100vh',
+            }}
+          >
+            <NavigationBar />
+            <Box component="main">{children}</Box>
+            <Footer />
+          </Box>
+        </ThemeRegistry>
+      </body>
     </html>
   );
 }

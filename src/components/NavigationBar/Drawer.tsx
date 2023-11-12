@@ -1,6 +1,8 @@
+'use client';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import { Drawer, IconButton } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DrawerContent from './DrawerContent';
 
 const DrawerComponent: React.FC = () => {
