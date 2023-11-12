@@ -104,22 +104,34 @@ export default function HomePage() {
     <Box sx={{ flexGrow: 1, bgcolor: 'primary.main' }}>
       {/* Minimalist Hero Section */}
       <Box
-        sx={{ textAlign: 'center', padding: 4, color: 'primary.contrastText' }}
+        sx={{
+          textAlign: 'center',
+          padding: '4vw',
+          color: 'primary.contrastText',
+          maxWidth: '60vw',
+          margin: '0 auto', // Center the box horizontally
+        }}
       >
         <Typography variant="h5" gutterBottom>
-          Hello there, my name is
+          Hello, my name is
         </Typography>
         <Typography variant="h3" color="secondary" gutterBottom>
           Dylan Henderson
         </Typography>
-        <Typography variant="subtitle1">
-          I'm a Fullstack Developer who loves exploring technology, coding, and
-          the world
+        <Typography variant="subtitle1" align="left">
+          I'm a Fullstack Developer with expertise in React, Typescript, and
+          building restful APIs using Node & Koa. My coding journey started with
+          crafting my first Minecraft plugin in 2015, sparking my passion for
+          continuous learning.
+        </Typography>
+        <Typography align="left">
+          When I'm not coding, you can find me walking, gaming, or attending PAX
+          Aus, which I've been doing since 2013.
         </Typography>
       </Box>
 
       {/* Featured Blog Posts Carousel */}
-      <Box sx={{ bgcolor: 'primary.main', py: 4, position: 'relative' }}>
+      <Box sx={{ position: 'relative' }}>
         <Typography
           variant="h5"
           gutterBottom
