@@ -7,6 +7,7 @@ import {
   ListItemButton,
   useTheme,
 } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import { Fragment } from 'react';
 
 interface DrawerContentProps {
@@ -17,6 +18,7 @@ interface DrawerContentProps {
 
 const DrawerContent: React.FC<DrawerContentProps> = ({ toggleDrawer }) => {
   const theme = useTheme();
+  const router = useRouter();
 
   return (
     <Box
@@ -42,7 +44,7 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ toggleDrawer }) => {
                 >
                   <Button
                     color="secondary"
-                    href={`#${text.toLowerCase()}`}
+                    onClick={() => router.push(`/#${text.toLowerCase()}`)}
                     sx={{
                       textTransform: 'none',
                       width: '100%',
