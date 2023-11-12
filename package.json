@@ -20,6 +20,7 @@
     "next": "14.0.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-material-ui-carousel": "^3.4.2",
     "typed.js": "^2.1.0"
   },
   "devDependencies": {
