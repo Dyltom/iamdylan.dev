@@ -14,7 +14,7 @@ export const links = [
 //TODO: replace with api call
 export const blogPosts: BlogPost[] = [
   {
-    title: 'Exploring the Depths of JavaScript',
+    title: 'Exploring the Depths of JavaScript #1',
     description: 'A deep dive into advanced concepts of JavaScript.',
     readTime: '5 min read',
     reads: 100,
@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
     date: 'Oct 1, 2021',
   },
   {
-    title: 'Exploring the Depths of JavaScript',
+    title: 'Exploring the Depths of JavaScript #2',
     description: 'A deep dive into advanced concepts of JavaScript.',
     readTime: '5 min read',
     reads: 100,
@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
     date: 'Oct 1, 2021',
   },
   {
-    title: 'Exploring the Depths of JavaScript',
+    title: 'Exploring the Depths of JavaScript #3',
     description: 'A deep dive into advanced concepts of JavaScript.',
     readTime: '5 min read',
     reads: 100,
@@ -38,7 +38,7 @@ export const blogPosts: BlogPost[] = [
     date: 'Oct 1, 2021',
   },
   {
-    title: 'Exploring the Depths of JavaScript',
+    title: 'Exploring the Depths of JavaScript #4',
     description: 'A deep dive into advanced concepts of JavaScript.',
     readTime: '5 min read',
     reads: 100,
@@ -46,7 +46,7 @@ export const blogPosts: BlogPost[] = [
     date: 'Oct 1, 2021',
   },
   {
-    title: 'Exploring the Depths of JavaScript',
+    title: 'Exploring the Depths of JavaScript #5',
     description: 'A deep dive into advanced concepts of JavaScript.',
     readTime: '5 min read',
     reads: 100,
@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
     date: 'Oct 1, 2021',
   },
   {
-    title: 'Exploring the Depths of JavaScript',
+    title: 'Exploring the Depths of JavaScript #6',
     description: 'A deep dive into advanced concepts of JavaScript.',
     readTime: '5 min read',
     reads: 100,
@@ -62,7 +62,15 @@ export const blogPosts: BlogPost[] = [
     date: 'Oct 1, 2021',
   },
   {
-    title: 'Exploring the Depths of JavaScript',
+    title: 'Exploring the Depths of JavaScript #7',
+    description: 'A deep dive into advanced concepts of JavaScript.',
+    readTime: '5 min read',
+    reads: 100,
+    categories: ['JavaScript', 'Programming'],
+    date: 'Oct 1, 2021',
+  },
+  {
+    title: 'Exploring the Depths of JavaScript #8',
     description: 'A deep dive into advanced concepts of JavaScript.',
     readTime: '5 min read',
     reads: 100,
