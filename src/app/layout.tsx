@@ -19,19 +19,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ParticleBackground />
-
         <ThemeRegistry>
           <Box
             sx={{
-              display: 'grid',
-              gridTemplateRows: 'auto 1fr auto', // Header, content, footer
+              backgroundColor: 'primary.main',
               minHeight: '100vh',
-              bgColor: 'primary.main',
+              display: 'flex',
+              flexDirection: 'column',
             }}
           >
+            <ParticleBackground />
             <NavigationBar />
-            <Box component="main">{children}</Box>
+            <Box
+              component="main"
+              sx={{ flexGrow: 1, maxWidth: '70vw', margin: 'auto' }}
+            >
+              {children}
+            </Box>
             <Footer />
           </Box>
         </ThemeRegistry>
