@@ -210,7 +210,7 @@ export default function HomePage() {
           Interested in collaborating or chatting?
         </Typography>
         <Button variant="outlined" color="secondary">
-          <Button href="/contact" color="success">
+          <Button href="/contact" color="secondary">
             Contact Me
           </Button>
         </Button>
