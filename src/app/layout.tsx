@@ -1,10 +1,9 @@
-'use client';
-import { Box, useMediaQuery } from '@mui/material';
+import { Box } from '@mui/material';
 import Footer from '../components/Footer';
 import NavigationBar from '../components/NavigationBar';
 import ParticleBackground from '../components/Particles';
 import ThemeRegistry from '../components/ThemeRegistry/ThemeRegistry';
-import theme from '../components/ThemeRegistry/theme';
+// import theme from '../components/ThemeRegistry/theme';
 
 export const metadata = {
   title: 'Dylan Henderson',
@@ -17,7 +16,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = false; //TODO fix
 
   return (
     <html lang="en">

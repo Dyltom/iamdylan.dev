@@ -6,3 +6,9 @@ export type BlogPost = {
   categories: string[];
   description: string;
 };
+
+export type EmailRequestType = {
+  name: string;
+  email: string;
+  message: string;
+};

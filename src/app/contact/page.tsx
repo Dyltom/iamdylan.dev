@@ -1,9 +1,21 @@
-import Box from '@mui/material/Box';
+import { Container } from '@mui/material';
+import ContactForm from '../../components/ContactForm';
 
-export default function ContactPage() {
+const ContactPage: React.FC = () => {
   return (
-    <Box sx={{ display: 'flex' }}>
-      <div>Contact</div>
-    </Box>
+    <Container
+      maxWidth="md"
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '80vh',
+      }}
+    >
+      <ContactForm />
+    </Container>
   );
-}
+};
+
+export default ContactPage;
