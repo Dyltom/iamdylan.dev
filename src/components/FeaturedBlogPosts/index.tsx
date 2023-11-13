@@ -27,8 +27,6 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
 
   const numberOfDots = blogPosts.length - (itemsPerSlide - 1);
 
-  console.log({ result: blogPosts.length % itemsPerSlide });
-
   const handlePrev = () => {
     if (swiperInstance) {
       swiperInstance.slidePrev();
@@ -42,7 +40,9 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
   };
 
   return (
-    <Box sx={{ position: 'relative', width: '100%' }}>
+    <Box
+      sx={{ position: 'relative', width: '100%', paddingTop: isMobile ? 4 : 0 }}
+    >
       <Typography
         variant="h5"
         gutterBottom

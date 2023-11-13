@@ -1,8 +1,11 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, useMediaQuery } from '@mui/material';
+
+import theme from '../ThemeRegistry/theme';
 
 const ContactCTA: React.FC = () => {
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   return (
-    <Box sx={{ textAlign: 'center', padding: 8 }}>
+    <Box sx={{ textAlign: 'center', padding: isMobile ? 4 : 8 }}>
       <Typography variant="h6" color="white" gutterBottom>
         Interested in collaborating or chatting?
       </Typography>

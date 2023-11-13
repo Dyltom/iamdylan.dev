@@ -1,9 +1,9 @@
 import { Box } from '@mui/material';
+import React from 'react';
 import Footer from '../components/Footer';
 import NavigationBar from '../components/NavigationBar';
 import ParticleBackground from '../components/Particles';
 import ThemeRegistry from '../components/ThemeRegistry/ThemeRegistry';
-// import theme from '../components/ThemeRegistry/theme';
 
 export const metadata = {
   title: 'Dylan Henderson',
@@ -16,8 +16,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isMobile = false; //TODO fix
-
   return (
     <html lang="en">
       <body>
@@ -36,8 +34,12 @@ export default function RootLayout({
               component="main"
               sx={{
                 flexGrow: 1,
-                maxWidth: isMobile ? '90vw' : '70vw',
                 margin: 'auto',
+                maxWidth: {
+                  xs: '90vw', // For small screens (mobile)
+                  sm: '80vw', // For medium screens (tablets)
+                  md: '70vw', // For larger screens (desktops)
+                },
               }}
             >
               {children}
