@@ -2,7 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 
 const ContactCTA: React.FC = () => {
   return (
-    <Box sx={{ textAlign: 'center', padding: 4 }}>
+    <Box sx={{ textAlign: 'center', padding: 8 }}>
       <Typography variant="h6" color="white" gutterBottom>
         Interested in collaborating or chatting?
       </Typography>
