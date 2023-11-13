@@ -87,12 +87,12 @@ const ContactForm: React.FC = () => {
             Are you interested in grabbing my CV?
           </Typography>
           <Button
-            variant="contained" // Changed to contained for more prominence
+            variant="contained"
             color="secondary"
             href="/CV_DylanHenderson_SEP23_V2.7.docx"
             download
             sx={{
-              mt: 1, // Added margin top
+              mt: 1,
             }}
           >
             Download CV
