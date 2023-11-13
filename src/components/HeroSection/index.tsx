@@ -1,13 +1,17 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
+
+import theme from '../ThemeRegistry/theme';
 
 const HeroSection: React.FC = () => {
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <Box
       sx={{
         textAlign: 'center',
         padding: '4vw',
         color: 'primary.contrastText',
-        maxWidth: '60vw',
+        maxWidth: isMobile ? '100vw' : '60vw',
         margin: '0 auto', // Center the box horizontally
       }}
     >

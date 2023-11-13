@@ -1,9 +1,10 @@
-// RootLayout.tsx
-import { Box } from '@mui/material';
+'use client';
+import { Box, useMediaQuery } from '@mui/material';
 import Footer from '../components/Footer';
 import NavigationBar from '../components/NavigationBar';
 import ParticleBackground from '../components/Particles';
 import ThemeRegistry from '../components/ThemeRegistry/ThemeRegistry';
+import theme from '../components/ThemeRegistry/theme';
 
 export const metadata = {
   title: 'Dylan Henderson',
@@ -16,6 +17,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <html lang="en">
       <body>
@@ -32,7 +35,11 @@ export default function RootLayout({
             <NavigationBar />
             <Box
               component="main"
-              sx={{ flexGrow: 1, maxWidth: '70vw', margin: 'auto' }}
+              sx={{
+                flexGrow: 1,
+                maxWidth: isMobile ? '90vw' : '70vw',
+                margin: 'auto',
+              }}
             >
               {children}
             </Box>
