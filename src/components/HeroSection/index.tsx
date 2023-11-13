@@ -27,9 +27,9 @@ const HeroSection: React.FC = () => {
         crafting my first Minecraft plugin in 2014, sparking my passion for
         continuous learning.
       </Typography>
-      <Typography align="left">
+      <Typography align="left" sx={{ paddingTop: 1 }}>
         When I'm not coding, you can find me walking, gaming, or attending PAX
-        Aus, which I've been doing since 2013.
+        Aus, which I've been doing since the first PAX in 2013.
       </Typography>
     </Box>
   );
