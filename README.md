@@ -1,4 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# iamdylan.dev
+
+Welcome to `iamdylan.dev`, a dynamic and professional portfolio website. Crafted using Next.js 13 and TypeScript, this site features a sleek design powered by Material-UI (MUI). It's not just a showcase of skills and projects but also includes a blog, contact forms with Google reCAPTCHA for spam protection, rate limiting for enhanced security, and emailing functionality.
+
+This project is bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Features
+
+- **Next.js 13**: Utilizing the latest capabilities of Next.js for fast, server-side rendered React applications.
+- **TypeScript**: Ensuring code reliability and maintainability with strong typing.
+- **Material-UI (MUI)**: A modern UI framework providing a suite of components for a great user interface.
+- **Google reCAPTCHA**: Integrated into forms for spam protection.
+- **Rate Limiting**: Implemented to prevent abuse and ensure service availability.
+- **Emailing**: Using Nodemailer to manage communication directly through the site.
+- **Blog**: An upcoming feature for sharing thoughts, insights, and updates.
 
 ## Getting Started
 
@@ -14,23 +28,36 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site in your browser. You can start editing by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project uses `next/font` for font optimization, including the custom Google Font, Inter.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Learn More about Next.js
 
-## Learn More
+- [Next.js Documentation](https://nextjs.org/docs) - Features and API.
+- [Learn Next.js](https://nextjs.org/learn) - An interactive tutorial.
+- Feedback and contributions are welcome at [the Next.js GitHub repository](https://github.com/vercel/next.js/).
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deploy with the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), recommended by Next.js. See the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Development Scripts
 
-## Deploy on Vercel
+In the project directory, you can run:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev` or equivalent: Starts the development server.
+- `npm run build`: Builds the app for production.
+- `npm start`: Runs the built app in production mode.
+- `npm run lint`: Lints and fixes files.
+- `npm run format:check`: Checks the format of files.
+- `npm run format:write`: Formats files.
+- `npm run types:check`: Checks TypeScript types.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Dependencies
+
+This project includes a variety of dependencies for functionality and development, including MUI components, Axios for HTTP requests, Nodemailer for email functionality, rate limiting, React and Next.js libraries, and many others for optimal development experience.
+
+---
+
+For any queries or contributions, feel free to open an issue or a pull request in the repository.
