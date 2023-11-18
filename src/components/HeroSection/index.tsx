@@ -20,10 +20,10 @@ const HeroSection: React.FC = () => {
         Dylan Henderson
       </Typography>
       <Typography variant="subtitle1" align="left">
-        I'm a Fullstack Developer with expertise in React, Typescript, and
-        building restful APIs using Node & Koa. My coding journey started with
-        crafting my first Minecraft plugin in 2014, sparking my passion for
-        continuous learning.
+        I'm a Fullstack Developer with expertise in React, TypeScript, and
+        building RESTful APIs using Node.js and Koa. This website pays tribute
+        to one of my favorite university assignments—a retro-style terminal
+        coded in C.
       </Typography>
       <Typography align="left" sx={{ paddingTop: 1 }}>
         When I'm not coding, you can find me walking, gaming, or attending PAX

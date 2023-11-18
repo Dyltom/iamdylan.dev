@@ -12,7 +12,7 @@ This project is bootstrapped with [`create-next-app`](https://github.com/vercel/
 - **Google reCAPTCHA**: Integrated into forms for spam protection.
 - **Rate Limiting**: Implemented to prevent abuse and ensure service availability.
 - **Emailing**: Using Nodemailer to manage communication directly through the site.
-- **Blog**: An upcoming feature for sharing thoughts, insights, and updates.
+- **Blog**: A feature for sharing thoughts, insights, and updates integrated with strapi.
 
 ## Getting Started
 
@@ -52,6 +52,8 @@ In the project directory, you can run:
 - `npm run format:check`: Checks the format of files.
 - `npm run format:write`: Formats files.
 - `npm run types:check`: Checks TypeScript types.
+- `npm run dep:check`: Checks for unused dependencies, missing dependencies and dependencies that require updates
+- `npm run dep:update`: Updates outdated dependencies
 
 ## Dependencies
 
