@@ -17,12 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <ThemeRegistry>
+    <ThemeRegistry>
+      <html lang="en">
+        <body>
           <Box
             sx={{
-              backgroundColor: 'primary.main',
               minHeight: '100vh',
               display: 'flex',
               flexDirection: 'column',
@@ -46,8 +45,8 @@ export default function RootLayout({
             </Box>
             <Footer />
           </Box>
-        </ThemeRegistry>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ThemeRegistry>
   );
 }

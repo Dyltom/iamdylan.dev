@@ -49,7 +49,6 @@ In the project directory, you can run:
 - `npm run dev` or equivalent: Starts the development server.
 - `npm run build`: Builds the app for production.
 - `npm start`: Runs the built app in production mode.
-- `npm run lint`: Lints and fixes files.
 - `npm run format:check`: Checks the format of files.
 - `npm run format:write`: Formats files.
 - `npm run types:check`: Checks TypeScript types.

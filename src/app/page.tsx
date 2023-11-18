@@ -1,19 +1,29 @@
 'use client';
 
-import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
-import ContactCTA from '../components/ContactCTA';
-import FeaturedBlogPosts from '../components/FeaturedBlogPosts';
+import { useEffect, useState } from 'react';
+import FeaturedBlogPosts from '../components/Blog/FeaturedBlogPosts';
+import ContactCTA from '../components/Contact/cta';
 import HeroSection from '../components/HeroSection';
-import { blogPosts } from '../utils/consts';
+import { getArticles } from '../fetchers/strapi';
+import { Article } from '../utils/types';
 
 export default function HomePage() {
-  const theme = useTheme();
+  const [posts, setPosts] = useState<Article[]>([]);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const articles = await getArticles();
+      console.log({ articles });
+      setPosts(articles);
+    };
+    fetchArticles();
+  }, []);
 
   return (
-    <Box sx={{ flexGrow: 1, bgcolor: 'primary.main' }}>
+    <Box sx={{ flexGrow: 1 }}>
       <HeroSection />
-      <FeaturedBlogPosts blogPosts={blogPosts} />
+      <FeaturedBlogPosts blogPosts={posts} />
       <ContactCTA />
     </Box>
   );

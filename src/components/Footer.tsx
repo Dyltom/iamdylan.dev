@@ -9,8 +9,6 @@ const Footer: React.FC = () => {
       sx={{
         mt: 'auto',
         py: 2,
-        backgroundColor: 'primary.main',
-        color: 'primary.contrastText',
       }}
     >
       <Container maxWidth="sm">
