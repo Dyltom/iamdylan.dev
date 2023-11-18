@@ -9,7 +9,6 @@ const TypedText: React.FC = () => {
   const [typed, setTyped] = useState<Typed | null>(null);
 
   useEffect(() => {
-    console.log('pathname', pathname);
     if (typed) {
       typed.destroy();
     }

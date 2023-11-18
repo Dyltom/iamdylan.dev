@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import ContactForm from '../../components/ContactForm';
+import ContactForm from '../../components/Contact/Form';
 
 const ContactPage: React.FC = () => {
   return (

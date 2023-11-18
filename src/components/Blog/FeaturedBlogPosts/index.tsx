@@ -11,12 +11,12 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Box, IconButton, Typography, useMediaQuery } from '@mui/material';
 
-import { BlogPost } from '../../utils/types';
-import theme from '../ThemeRegistry/theme';
-import BlogPostCard from './BlogPostCard';
+import { Article } from '../../../utils/types';
+import theme from '../../ThemeRegistry/theme';
+import BlogPostCard from '../BlogPostCard';
 
 type FeaturedBlogPostsType = {
-  blogPosts: BlogPost[];
+  blogPosts: Article[];
 };
 
 const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
@@ -40,13 +40,15 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
   };
 
   return (
-    <Box
-      sx={{ position: 'relative', width: '100%', paddingTop: isMobile ? 4 : 0 }}
-    >
+    <Box sx={{ position: 'relative' }}>
       <Typography
         variant="h5"
         gutterBottom
-        sx={{ textAlign: 'center', color: 'secondary.main' }}
+        sx={{
+          textAlign: 'center',
+          color: 'secondary.main',
+          paddingTop: isMobile ? 4 : 8,
+        }}
       >
         Featured Posts
       </Typography>
@@ -93,7 +95,7 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
                 backgroundColor:
                   index === swiperInstance?.activeIndex
                     ? 'secondary.main'
-                    : 'white',
+                    : 'primary.contrastText',
                 mx: 0.5,
               }}
               onClick={() => swiperInstance?.slideTo(index)}

@@ -9,10 +9,8 @@ const HeroSection: React.FC = () => {
     <Box
       sx={{
         textAlign: 'center',
-        padding: '4vw',
+        marginTop: isMobile ? 2 : 4,
         color: 'primary.contrastText',
-        maxWidth: isMobile ? '100vw' : '60vw',
-        margin: '0 auto', // Center the box horizontally
       }}
     >
       <Typography variant="h5" gutterBottom>
