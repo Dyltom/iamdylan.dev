@@ -11,6 +11,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Box, IconButton, Typography, useMediaQuery } from '@mui/material';
 
+import { sortPosts } from '../../../utils/sorts';
 import { Article } from '../../../utils/types';
 import theme from '../../ThemeRegistry/theme';
 import BlogPostCard from '../BlogPostCard';
@@ -24,6 +25,8 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
   const itemsPerSlide = isMobile ? 1 : 3;
   const [, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+
+  const sortedBlogPosts = sortPosts(blogPosts, 'mostRecent', true);
 
   const numberOfDots = blogPosts.length - (itemsPerSlide - 1);
 
@@ -66,7 +69,7 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
         pagination={false}
         style={{ paddingTop: 4 }}
       >
-        {blogPosts.map((post, index) => (
+        {sortedBlogPosts.map((post, index) => (
           <SwiperSlide key={index}>
             <BlogPostCard post={post} />
           </SwiperSlide>

@@ -44,8 +44,14 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
             {formattedDate}
           </Typography>
         </Box>
-
-        <Typography variant="h6" gutterBottom>
+        <Typography
+          variant="h6"
+          gutterBottom
+          sx={{
+            minHeight: '3.6em', // Adjust this value based on your theme's typography for h6
+            marginBottom: 1, // Ensures space between title and description if the title is short
+          }}
+        >
           <Link
             href={`/blog/${post.slug}`}
             sx={{
@@ -58,7 +64,6 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
             {post.Title}
           </Link>
         </Typography>
-
         <Typography variant="body2" sx={{ marginBottom: 1 }}>
           {post.shortDescription}
         </Typography>
