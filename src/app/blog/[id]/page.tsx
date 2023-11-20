@@ -36,8 +36,6 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
     return <Typography color="primary.contrastText">Loading...</Typography>;
   }
 
-  console.log({ article });
-
   const formattedDate = format(new Date(article.publishedAt), 'MMMM dd, yyyy');
   const formattedReadTime = formatReadTime(article.readTime);
   const formattedLastUpdated = format(

@@ -54,8 +54,6 @@ const SkillsDisplay: React.FC<SkillsDisplayProps> = ({ title, keyText }) => {
     return null;
   }
 
-  console.log({ skills });
-
   const maxSkillExperience = Math.max(
     ...skills.map((skill) => skill.attributes.experience)
   );

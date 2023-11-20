@@ -23,8 +23,6 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
     fetchWorkExperience();
   }, []);
 
-  console.log({ workExperience });
-
   if (!workExperience) {
     return null;
   }

@@ -15,7 +15,6 @@ export default function HomePage() {
   useEffect(() => {
     const fetchArticles = async () => {
       const articles = await getArticles();
-      console.log({ articles });
       setPosts(articles);
     };
     fetchArticles();

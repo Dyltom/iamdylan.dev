@@ -28,7 +28,6 @@ export default function BlogPage() {
   useEffect(() => {
     const fetchArticles = async () => {
       const articles = await getArticles();
-      console.log({ articles });
       setPosts(articles);
       setFilteredPosts(articles);
     };
@@ -66,8 +65,6 @@ export default function BlogPage() {
   ) => {
     setDateFilter(event.target.value as 'year' | 'week' | 'day' | '');
   };
-
-  console.log(filteredPosts);
 
   return (
     <Box sx={{ p: 2 }}>
