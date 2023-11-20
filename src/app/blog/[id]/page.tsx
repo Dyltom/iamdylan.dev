@@ -83,10 +83,10 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
         </Box>
         <SocialMediaShare />
       </Stack>
-      <Divider color="#21262d" sx={{ my: 2 }} />
       <TableOfContents article={article} />
       <Divider color="#21262d" sx={{ my: 4 }} />
       <ReactMarkdown children={markdownContent} rehypePlugins={[rehypeSlug]} />
+      <Divider color="#21262d" sx={{ my: 4 }} />
       <Typography
         color="primary.contrastText"
         variant="subtitle2"

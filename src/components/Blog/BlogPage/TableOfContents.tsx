@@ -1,4 +1,4 @@
-import { Link, List, ListItem, Typography } from '@mui/material';
+import { Divider, Link, List, ListItem, Typography } from '@mui/material';
 import { useMemo } from 'react';
 import { Article } from '../../../utils/types';
 
@@ -20,8 +20,13 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ article }) => {
       }));
   }, [article]);
 
+  if (tocItems.length === 0) {
+    return null;
+  }
+
   return (
     <>
+      <Divider color="#21262d" sx={{ my: 2 }} />
       <Typography variant="h6" sx={{ mb: 2 }}>
         Contents
       </Typography>
