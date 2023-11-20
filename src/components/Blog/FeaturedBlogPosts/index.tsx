@@ -21,6 +21,10 @@ type FeaturedBlogPostsType = {
 };
 
 const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
+  if (blogPosts.length === 0) {
+    return null;
+  }
+
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const itemsPerSlide = isMobile ? 1 : 3;
   const [, setActiveIndex] = useState(0);
@@ -49,11 +53,11 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
         gutterBottom
         sx={{
           textAlign: 'center',
-          color: 'secondary.main',
+          color: 'primary.contrastText',
           paddingTop: isMobile ? 4 : 8,
         }}
       >
-        Featured Posts
+        Recent Posts
       </Typography>
       <Swiper
         onSwiper={setSwiperInstance}
