@@ -10,14 +10,14 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ article }) => {
   const tocItems = useMemo(() => {
     if (!article) return [];
 
-    return article.Content.filter((block) => block.type === 'heading').map(
-      (block) => ({
+    return article.content
+      .filter((block) => block.type === 'heading')
+      .map((block) => ({
         level: block.level ?? 0,
         text: block.children
           .map((child) => child.text.replace(/[?]/g, ''))
           .join(' '),
-      })
-    );
+      }));
   }, [article]);
 
   return (

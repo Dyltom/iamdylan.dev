@@ -1,41 +1,33 @@
 import { Box, Paper, Tab, Tabs, Typography, useTheme } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getWorkExperience } from '../../fetchers/workExperience';
 import { underLineHeaders } from '../../utils/styles';
+import { WorkExperience as WorkExperienceType } from '../../utils/types';
 
-type Company = {
-  name: string;
+type WorkExperienceProps = {
   title: string;
-  startDate: string;
-  endDate: string;
-  points: string[];
 };
 
-const companies: Company[] = [
-  {
-    name: 'Company A',
-    title: 'Software Engineer',
-    startDate: 'Jan 2020',
-    endDate: 'Present',
-    points: [
-      'Developed new user-facing features using React.js',
-      'Built reusable components and front-end libraries for future use',
-    ],
-  },
-  {
-    name: 'Company A',
-    title: 'Software Engineer',
-    startDate: 'Jan 2020',
-    endDate: 'Present',
-    points: [
-      'Developed new user-facing features using React.js',
-      'Built reusable components and front-end libraries for future use',
-    ],
-  },
-];
-
-const WorkExperience: React.FC = () => {
+const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
   const theme = useTheme();
   const [selectedCompanyIndex, setSelectedCompanyIndex] = useState(0);
+  const [workExperience, setWorkExperience] = useState<
+    WorkExperienceType[] | undefined
+  >([]);
+
+  useEffect(() => {
+    const fetchWorkExperience = async () => {
+      const fetchedWorkExperience = await getWorkExperience();
+      setWorkExperience(fetchedWorkExperience);
+    };
+    fetchWorkExperience();
+  }, []);
+
+  console.log({ workExperience });
+
+  if (!workExperience) {
+    return null;
+  }
 
   const handleChange = (event: React.SyntheticEvent, newIndex: number) => {
     setSelectedCompanyIndex(newIndex);
@@ -63,7 +55,7 @@ const WorkExperience: React.FC = () => {
         gutterBottom
         sx={underLineHeaders(theme)}
       >
-        Work Experience
+        {title}
       </Typography>
 
       <Box
@@ -101,8 +93,8 @@ const WorkExperience: React.FC = () => {
             pr: theme.spacing(2), // Padding right
           }}
         >
-          {companies.map((company, index) => (
-            <Tab label={company.name} key={index} />
+          {workExperience.map((company, index) => (
+            <Tab label={company.attributes.company} key={index} />
           ))}
         </Tabs>
 
@@ -116,7 +108,7 @@ const WorkExperience: React.FC = () => {
             p: theme.spacing(2),
           }}
         >
-          {companies.map((company, index) => (
+          {workExperience.map((company, index) => (
             <Box
               key={index}
               role="tabpanel"
@@ -125,15 +117,16 @@ const WorkExperience: React.FC = () => {
               {selectedCompanyIndex === index && (
                 <Box sx={{}}>
                   <Typography variant="h6" color="secondary" gutterBottom>
-                    {company.title} at {company.name}
+                    {company.attributes.title} at {company.attributes.company}
                   </Typography>
                   <Typography
                     variant="body2"
                     sx={{ color: theme.palette.secondary.light }}
                   >
-                    {company.startDate} - {company.endDate}
+                    {company.attributes.startDate.toString()} -{' '}
+                    {company.attributes.endDate.toString()}
                   </Typography>
-                  {company.points.map((point, idx) => (
+                  {company.attributes.points.map((point, idx) => (
                     <Typography
                       key={idx}
                       variant="body2"

@@ -11,7 +11,8 @@ import rehypeSlug from 'rehype-slug';
 
 import SocialMediaShare from '../../../components/Blog/BlogPage/SocialMediaShare';
 import TableOfContents from '../../../components/Blog/BlogPage/TableOfContents';
-import { getArticle } from '../../../fetchers/strapi';
+
+import { getArticle } from '../../../fetchers/article';
 import { convertContentToMarkdown } from '../../../utils/converters';
 import { formatReadTime } from '../../../utils/dateAndTime';
 import { Article } from '../../../utils/types';
@@ -19,17 +20,9 @@ import { Article } from '../../../utils/types';
 type BlogPostDetailProps = {
   params: { id: string };
 };
-
-interface GenericNode {
-  type: string;
-  tagName?: string;
-  properties?: { [key: string]: any };
-  children?: Array<{ type: string; value?: string }>;
-}
-
 const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
   const { id: slug } = params;
-  const [article, setArticle] = useState<Article | null>(null);
+  const [article, setArticle] = useState<Article | undefined>(undefined);
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -43,6 +36,8 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
     return <Typography color="primary.contrastText">Loading...</Typography>;
   }
 
+  console.log({ article });
+
   const formattedDate = format(new Date(article.publishedAt), 'MMMM dd, yyyy');
   const formattedReadTime = formatReadTime(article.readTime);
   const formattedLastUpdated = format(
@@ -50,22 +45,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
     'MMMM dd, yyyy'
   );
 
-  const markdownContent = convertContentToMarkdown(article.Content);
-
-  const rehypeRewrite = (node: GenericNode) => {
-    if (
-      node.tagName &&
-      /^h(1|2|3|4|5|6)$/.test(node.tagName) &&
-      node.children &&
-      node.children.length > 0
-    ) {
-      const firstChild = node.children[0];
-      if (firstChild.type === 'text' && firstChild.value) {
-        const slug = firstChild.value.toLowerCase().replace(/\s+/g, '-');
-        node.properties = { ...node.properties, id: slug };
-      }
-    }
-  };
+  const markdownContent = convertContentToMarkdown(article.content);
 
   return (
     <Box
@@ -77,7 +57,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
       }}
     >
       <Typography variant="h4" gutterBottom>
-        {article.Title}
+        {article.title}
       </Typography>
       <Stack
         direction="row"

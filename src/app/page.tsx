@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 import FeaturedBlogPosts from '../components/Blog/FeaturedBlogPosts';
 import ContactCTA from '../components/Contact/cta';
 import HeroSection from '../components/HeroSection';
-import { getArticles } from '../fetchers/strapi';
+
+import { getArticles } from '../fetchers/article';
 import { Article } from '../utils/types';
 
 export default function HomePage() {

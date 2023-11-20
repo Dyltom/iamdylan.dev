@@ -1,26 +1,30 @@
 import { Box, Typography, useTheme } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getTestimonials } from '../../fetchers/testimonial';
 import { underLineHeaders } from '../../utils/styles';
+import { Testimonial } from '../../utils/types';
 
-// Mock data for testimonials
-const testimonialsData = [
-  {
-    quote:
-      "Dylan's work on our React project was outstanding. He delivered high-quality code on time and exceeded our expectations.",
-    author: 'Alex Johnson',
-    role: 'CTO at TechCorp',
-  },
-  {
-    quote:
-      'The Node.js API developed by Dylan has been robust and scalable, serving as a solid backbone for our services.',
-    author: 'Samantha Smith',
-    role: 'Lead Developer at DevStudio',
-  },
-  // ...add more testimonials as needed
-];
+type TestimonialsProps = {
+  title: string;
+};
 
-const Testimonials: React.FC = () => {
+const Testimonials: React.FC<TestimonialsProps> = ({ title }) => {
   const theme = useTheme();
+  const [testimonials, setTestimonials] = useState<Testimonial[] | undefined>(
+    undefined
+  );
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      const fetchedSkills = await getTestimonials();
+      setTestimonials(fetchedSkills);
+    };
+    fetchTestimonials();
+  }, []);
+
+  if (!testimonials || testimonials.length === 0) {
+    return null;
+  }
 
   return (
     <Box
@@ -38,9 +42,9 @@ const Testimonials: React.FC = () => {
         component="div"
         sx={underLineHeaders(theme)}
       >
-        What People Say About Me
+        {title}
       </Typography>
-      {testimonialsData.map((testimonial, index) => (
+      {testimonials.map((testimonial, index) => (
         <Box
           key={index}
           sx={{
@@ -55,12 +59,14 @@ const Testimonials: React.FC = () => {
             variant="body1"
             sx={{ mb: 1, color: theme.palette.secondary.light }}
           >
-            "{testimonial.quote}"
+            "{testimonial.attributes.quote}"
           </Typography>
           <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-            {testimonial.author}
+            {testimonial.attributes.author}
           </Typography>
-          <Typography variant="caption">{testimonial.role}</Typography>
+          <Typography variant="caption">
+            {testimonial.attributes.role}
+          </Typography>
         </Box>
       ))}
     </Box>

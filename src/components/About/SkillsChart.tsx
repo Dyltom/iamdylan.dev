@@ -1,22 +1,10 @@
 // components/SkillsDisplay.tsx
 import { Box, LinearProgress, Typography, useTheme } from '@mui/material';
 import { styled } from '@mui/system';
+import { useEffect, useState } from 'react';
+import { getSkills } from '../../fetchers/skill';
 import { underLineHeaders } from '../../utils/styles';
-
-type Skill = {
-  name: string;
-  experience: number; // Experience in years
-};
-
-//TODO: pull out of strapi
-const skills: Skill[] = [
-  { name: 'React', experience: 2.5 },
-  { name: 'Typescript', experience: 2 },
-  { name: 'Node.js', experience: 1.5 },
-];
-
-const maxSkillExperience = Math.max(...skills.map((skill) => skill.experience));
-const maxExperience = Math.ceil(maxSkillExperience); // Set max slightly above the highest skill experience
+import { Skill } from '../../utils/types';
 
 const SkillBarContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
@@ -45,8 +33,33 @@ const ExperienceMarker = styled(Box)(({ theme }) => ({
   zIndex: 1,
 }));
 
-const SkillsDisplay: React.FC = () => {
+type SkillsDisplayProps = {
+  title: string;
+  keyText: string;
+};
+
+const SkillsDisplay: React.FC<SkillsDisplayProps> = ({ title, keyText }) => {
   const theme = useTheme();
+  const [skills, setSkills] = useState<Skill[] | undefined>(undefined);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      const fetchedSkills = await getSkills();
+      setSkills(fetchedSkills);
+    };
+    fetchSkills();
+  }, []);
+
+  if (!skills || skills.length === 0) {
+    return null;
+  }
+
+  console.log({ skills });
+
+  const maxSkillExperience = Math.max(
+    ...skills.map((skill) => skill.attributes.experience)
+  );
+  const maxExperience = Math.ceil(maxSkillExperience);
 
   return (
     <Box sx={{ color: theme.palette.primary.contrastText, padding: '1rem' }}>
@@ -56,7 +69,7 @@ const SkillsDisplay: React.FC = () => {
         component="div"
         sx={underLineHeaders(theme)}
       >
-        My Technical Skills
+        {title}
       </Typography>
       <Typography
         variant="caption"
@@ -64,7 +77,7 @@ const SkillsDisplay: React.FC = () => {
         gutterBottom
         sx={{ fontFamily: 'monospace', textAlign: 'center', marginTop: '1rem' }}
       >
-        Each marker represents 1 year of experience.
+        {keyText}
       </Typography>
       {skills.map((skill, index) => (
         <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -77,7 +90,7 @@ const SkillsDisplay: React.FC = () => {
               marginRight: '1rem',
             }}
           >
-            {skill.name}
+            {skill.attributes.name}
           </Typography>
           <SkillBarContainer>
             {Array.from({ length: Math.floor(maxExperience) }).map((_, i) => (
@@ -90,7 +103,7 @@ const SkillsDisplay: React.FC = () => {
             ))}
             <SkillBarProgress
               variant="determinate"
-              value={(skill.experience / maxExperience) * 100}
+              value={(skill.attributes.experience / maxExperience) * 100}
             />
           </SkillBarContainer>
         </Box>

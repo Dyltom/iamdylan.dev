@@ -61,7 +61,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
               '&:hover': { color: theme.palette.secondary.main },
             }}
           >
-            {post.Title}
+            {post.title}
           </Link>
         </Typography>
         <Typography variant="body2" sx={{ marginBottom: 1 }}>

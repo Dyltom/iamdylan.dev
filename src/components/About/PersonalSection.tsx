@@ -7,7 +7,12 @@ import WorkIcon from '@mui/icons-material/Work';
 import { Box, Typography, useTheme } from '@mui/material';
 import { underLineHeaders } from '../../utils/styles';
 
-const PersonalSection: React.FC = () => {
+type PersonalSectionProps = {
+  title: string;
+};
+
+//TODO: use strapi data here
+const PersonalSection: React.FC<PersonalSectionProps> = ({ title }) => {
   const theme = useTheme();
 
   return (
@@ -25,7 +30,7 @@ const PersonalSection: React.FC = () => {
         color="secondary"
         sx={underLineHeaders(theme)}
       >
-        A Little More About Me
+        {title}
       </Typography>
       <Box
         sx={{
