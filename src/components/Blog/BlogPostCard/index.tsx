@@ -2,7 +2,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import EventIcon from '@mui/icons-material/Event';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Box, Link, Paper, Typography, useTheme } from '@mui/material';
-import { format } from 'date-fns';
+import { commonDateFormatter } from '../../../utils/date';
 import { formatReadTime } from '../../../utils/dateAndTime';
 import { Article } from '../../../utils/types';
 
@@ -12,7 +12,7 @@ type BlogPostCardProps = {
 
 const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
   const theme = useTheme();
-  const formattedDate = format(new Date(post.publishedAt), 'MMMM dd, yyyy');
+  const formattedDate = commonDateFormatter(post.publishedAt);
   const formattedReadTime = formatReadTime(post.readTime);
 
   return (

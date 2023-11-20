@@ -8,7 +8,7 @@ export type Article = {
   content: Paragraph[];
   createdAt: Date;
   updatedAt: Date;
-  publishedAt: Date;
+  publishedAt: string;
   slug: string;
   categories: string[];
 };
@@ -96,7 +96,7 @@ export type WorkExperience = {
     company: string;
     points: string[];
     title: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
   };
 };

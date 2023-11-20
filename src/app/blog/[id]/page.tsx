@@ -14,6 +14,7 @@ import TableOfContents from '../../../components/Blog/BlogPage/TableOfContents';
 
 import { getArticle } from '../../../fetchers/article';
 import { convertContentToMarkdown } from '../../../utils/converters';
+import { commonDateFormatter } from '../../../utils/date';
 import { formatReadTime } from '../../../utils/dateAndTime';
 import { Article } from '../../../utils/types';
 
@@ -36,7 +37,7 @@ const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ params }) => {
     return <Typography color="primary.contrastText">Loading...</Typography>;
   }
 
-  const formattedDate = format(new Date(article.publishedAt), 'MMMM dd, yyyy');
+  const formattedDate = commonDateFormatter(article.publishedAt);
   const formattedReadTime = formatReadTime(article.readTime);
   const formattedLastUpdated = format(
     new Date(article.updatedAt),

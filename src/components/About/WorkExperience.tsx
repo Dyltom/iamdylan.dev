@@ -1,6 +1,7 @@
 import { Box, Paper, Tab, Tabs, Typography, useTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { getWorkExperience } from '../../fetchers/workExperience';
+import { commonDateFormatter } from '../../utils/date';
 import { underLineHeaders } from '../../utils/styles';
 import { WorkExperience as WorkExperienceType } from '../../utils/types';
 
@@ -121,8 +122,8 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
                     variant="body2"
                     sx={{ color: theme.palette.secondary.light }}
                   >
-                    {company.attributes.startDate.toString()} -{' '}
-                    {company.attributes.endDate.toString()}
+                    {commonDateFormatter(company.attributes.startDate)} -{' '}
+                    {commonDateFormatter(company.attributes.endDate)}
                   </Typography>
                   {company.attributes.points.map((point, idx) => (
                     <Typography
