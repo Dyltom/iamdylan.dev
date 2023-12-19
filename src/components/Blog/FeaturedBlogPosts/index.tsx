@@ -11,6 +11,10 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Box, IconButton, Typography, useMediaQuery } from '@mui/material';
 
+import {
+  MAX_BLOG_POSTS_DESKTOP,
+  MAX_BLOG_POSTS_MOBILE,
+} from '../../../utils/consts';
 import { sortPosts } from '../../../utils/sorts';
 import { Article } from '../../../utils/types';
 import theme from '../../ThemeRegistry/theme';
@@ -26,7 +30,9 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
   }
 
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const itemsPerSlide = isMobile ? 1 : 3;
+  const itemsPerSlide = isMobile
+    ? MAX_BLOG_POSTS_MOBILE
+    : MAX_BLOG_POSTS_DESKTOP;
   const [, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
@@ -109,9 +115,12 @@ const FeaturedBlogPosts: React.FC<FeaturedBlogPostsType> = ({ blogPosts }) => {
             />
           ))}
         </Box>
-        <IconButton onClick={handleNext} sx={{ color: 'secondary.main' }}>
-          <ArrowForwardIosIcon />
-        </IconButton>
+        {isMobile ||
+          (blogPosts.length > MAX_BLOG_POSTS_DESKTOP && (
+            <IconButton onClick={handleNext} sx={{ color: 'secondary.main' }}>
+              <ArrowForwardIosIcon />
+            </IconButton>
+          ))}
       </Box>
     </Box>
   );
