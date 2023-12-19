@@ -31,3 +31,28 @@ export const selectFieldSx = (theme: Theme) => ({
 
   marginBottom: 2,
 });
+
+export const underLineHeaders = (theme: Theme) => {
+  return {
+    gridColumn: '1 / -1', // Span across all columns
+    fontFamily: 'monospace',
+    color: theme.palette.primary.contrastText,
+    textAlign: 'center',
+    marginBottom: theme.spacing(2),
+    position: 'relative',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      height: '3px',
+      bottom: '-10px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '0',
+      background: theme.palette.secondary.main,
+      transition: 'width 0.3s ease-in-out',
+    },
+    '&:hover::after': {
+      width: '100%',
+    },
+  };
+};

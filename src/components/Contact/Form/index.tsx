@@ -11,7 +11,10 @@ import {
 import React, { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
+import { getContactUsPage } from '../../../fetchers/pages';
 import { verifyCaptcha } from '../../../utils/ServerActions';
+import { convertContentToMarkdown } from '../../../utils/converters';
+import { ContactUs } from '../../../utils/types';
 import Fields from './Fields';
 
 const ContactForm: React.FC = () => {
@@ -28,14 +31,26 @@ const ContactForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [renderRecaptcha, setRenderRecaptcha] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
+  const [contactUsContent, setContactUsContent] = useState<
+    ContactUs | undefined
+  >(undefined);
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
       setRenderRecaptcha(true);
     }
+    const fetchContactUsPageContent = async () => {
+      const fetchedContactUs = await getContactUsPage();
+      setContactUsContent(fetchedContactUs);
+    };
+    fetchContactUsPageContent();
   }, []);
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+
+  if (!contactUsContent) {
+    return null;
+  }
 
   const handleCaptchaVerification = (token: string | null) => {
     if (!token && process.env.IS_RECAPTCHA_ENABLED) {
@@ -104,6 +119,10 @@ const ContactForm: React.FC = () => {
     setOpenSnackbar(false);
   };
 
+  const markdownContent = convertContentToMarkdown(
+    contactUsContent.attributes.content
+  );
+
   return (
     <Grid container spacing={2}>
       {/* Contact details, replace with your own content */}
@@ -116,11 +135,12 @@ const ContactForm: React.FC = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'flex-start',
+          color: 'primary.contrastText',
           p: 2, // Added padding
         }}
       >
         <Typography variant="h6" color="primary.contrastText" gutterBottom>
-          Let's Connect
+          {contactUsContent.attributes.title}
         </Typography>
         <Typography variant="body1" color="primary.contrastText" gutterBottom>
           Feel free to reach out to me here, on{' '}
@@ -141,20 +161,24 @@ const ContactForm: React.FC = () => {
           </Link>
           .
         </Typography>
+
         <Box mt={2}>
           <Typography color="primary.contrastText">
-            Are you interested in grabbing my CV?
+            {contactUsContent.attributes.resumeCta}
           </Typography>
           <Button
             variant="contained"
             color="secondary"
-            href="/CV_DylanHenderson_NOV23_V3.3.docx.pdf"
+            href={`${
+              process.env.NEXT_PUBLIC_STRAPI_ADMIN_URL +
+              contactUsContent.attributes.resume.data.attributes.url
+            }`}
             download
             sx={{
               mt: 1,
             }}
           >
-            Download CV
+            {contactUsContent.attributes.resumeCtaButtonText}
           </Button>
         </Box>
       </Grid>

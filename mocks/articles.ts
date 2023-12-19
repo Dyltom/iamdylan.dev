@@ -8,8 +8,8 @@ const worker = setupWorker(
       return HttpResponse.json(
         {
           id: 1,
-          Title: 'How to make a Blog in 10 steps or less! (Step 1)',
-          Content: [
+          title: 'How to make a Blog in 10 steps or less! (Step 1)',
+          content: [
             {
               type: 'paragraph',
               children: [
@@ -41,8 +41,8 @@ const worker = setupWorker(
           {
             id: 1,
             attributes: {
-              Title: 'How to make a Blog in 10 steps or less! (Step 1)',
-              Content: [
+              title: 'How to make a Blog in 10 steps or less! (Step 1)',
+              content: [
                 {
                   type: 'paragraph',
                   children: [

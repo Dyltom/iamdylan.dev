@@ -6,7 +6,8 @@ import BlogPostCard from '../../components/Blog/BlogPostCard';
 import DateFilterSelect from '../../components/Blog/DateFilterSelect';
 import SearchBar from '../../components/Blog/Searchbar';
 import SortSelect from '../../components/Blog/SortSelect';
-import { getArticles } from '../../fetchers/strapi';
+
+import { getArticles } from '../../fetchers/article';
 import { filterPostsByDate } from '../../utils/filters';
 import { sortPosts } from '../../utils/sorts';
 import { Article } from '../../utils/types';
@@ -27,7 +28,6 @@ export default function BlogPage() {
   useEffect(() => {
     const fetchArticles = async () => {
       const articles = await getArticles();
-      console.log({ articles });
       setPosts(articles);
       setFilteredPosts(articles);
     };
@@ -42,7 +42,7 @@ export default function BlogPage() {
       const lowercasedFilter = searchTerm.toLowerCase();
       processedPosts = processedPosts.filter(
         (post) =>
-          post.Title.toLowerCase().includes(lowercasedFilter) ||
+          post.title.toLowerCase().includes(lowercasedFilter) ||
           post.shortDescription.toLowerCase().includes(lowercasedFilter)
       );
     }
@@ -65,8 +65,6 @@ export default function BlogPage() {
   ) => {
     setDateFilter(event.target.value as 'year' | 'week' | 'day' | '');
   };
-
-  console.log(filteredPosts);
 
   return (
     <Box sx={{ p: 2 }}>
