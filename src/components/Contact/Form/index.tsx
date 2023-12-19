@@ -1,9 +1,16 @@
 'use client';
-import { Alert, Box, Button, Grid, Snackbar, Typography } from '@mui/material';
+import {
+  Alert,
+  Box,
+  Button,
+  Grid,
+  Link,
+  Snackbar,
+  Typography,
+} from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import ReactMarkdown from 'react-markdown';
 import { getContactUsPage } from '../../../fetchers/pages';
 import { verifyCaptcha } from '../../../utils/ServerActions';
 import { convertContentToMarkdown } from '../../../utils/converters';
@@ -135,7 +142,26 @@ const ContactForm: React.FC = () => {
         <Typography variant="h6" color="primary.contrastText" gutterBottom>
           {contactUsContent.attributes.title}
         </Typography>
-        <ReactMarkdown children={markdownContent} />
+        <Typography variant="body1" color="primary.contrastText" gutterBottom>
+          Feel free to reach out to me here, on{' '}
+          <Link
+            href="https://www.linkedin.com/in/dylan-henderson-07/"
+            target="_blank"
+            color="secondary"
+          >
+            LinkedIn
+          </Link>{' '}
+          or check out my projects on{' '}
+          <Link
+            href="https://github.com/Dyltom"
+            target="_blank"
+            color="secondary"
+          >
+            GitHub
+          </Link>
+          .
+        </Typography>
+
         <Box mt={2}>
           <Typography color="primary.contrastText">
             {contactUsContent.attributes.resumeCta}
