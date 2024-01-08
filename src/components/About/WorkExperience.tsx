@@ -1,4 +1,13 @@
-import { Box, Paper, Tab, Tabs, Typography, useTheme } from '@mui/material';
+import {
+  Box,
+  Container,
+  Paper,
+  Tab,
+  Tabs,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { getWorkExperience } from '../../fetchers/workExperience';
 import { commonDateFormatter } from '../../utils/date';
@@ -11,6 +20,7 @@ type WorkExperienceProps = {
 
 const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [selectedCompanyIndex, setSelectedCompanyIndex] = useState(0);
   const [workExperience, setWorkExperience] = useState<
     WorkExperienceType[] | undefined
@@ -32,25 +42,23 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
     setSelectedCompanyIndex(newIndex);
   };
 
+  const customScrollbarStyles = {
+    '&::-webkit-scrollbar': {
+      width: '8px',
+    },
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: 'transparent',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: theme.palette.secondary.main,
+    },
+  };
+
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: theme.palette.background.default,
-        color: theme.palette.primary.contrastText,
-        borderRadius: theme.shape.borderRadius,
-        boxShadow: `inset 0 0 10px ${theme.palette.primary.dark}`,
-        overflow: 'hidden', // To ensure the boxShadow doesn't leak
-        maxWidth: '1000px', // Max width for the entire component
-        mx: 'auto', // Center the component horizontally
-        marginTop: 8,
-        marginBottom: 4,
-      }}
-    >
+    <Container maxWidth="lg" sx={{ my: 4 }}>
       <Typography
         variant="h5"
-        color="primary.contrastText"
+        color="secondary.contrastText"
         gutterBottom
         sx={underLineHeaders(theme)}
       >
@@ -60,20 +68,25 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'row',
-          flexGrow: 1,
-          p: theme.spacing(2),
+          flexDirection: isMobile ? 'column' : 'row',
+          backgroundColor: theme.palette.primary.dark,
+          color: theme.palette.secondary.contrastText,
+          overflow: 'hidden',
+          ...customScrollbarStyles,
         }}
       >
         <Tabs
-          orientation="vertical"
+          orientation={isMobile ? 'horizontal' : 'vertical'}
           value={selectedCompanyIndex}
           onChange={handleChange}
           variant="scrollable"
+          scrollButtons="auto"
           sx={{
-            borderRight: `1px solid ${theme.palette.divider}`,
+            borderRight: isMobile
+              ? 'none'
+              : `1px solid ${theme.palette.divider}`,
             '& .MuiTabs-indicator': {
-              backgroundColor: theme.palette.secondary.main,
+              backgroundColor: theme.palette.secondary.light,
             },
             '& .MuiTab-root': {
               justifyContent: 'flex-start',
@@ -88,8 +101,10 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
                 backgroundColor: theme.palette.primary.dark,
               },
             },
-            minWidth: '200px', // Minimum width for tabs
-            pr: theme.spacing(2), // Padding right
+            minWidth: '200px',
+            pr: theme.spacing(2),
+            maxHeight: '300px',
+            overflowY: 'auto',
           }}
         >
           {workExperience.map((company, index) => (
@@ -100,11 +115,14 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
         <Paper
           elevation={0}
           sx={{
-            flex: 1, // Paper will fill the remaining space
-            backgroundColor: 'transparent',
-            color: theme.palette.primary.contrastText,
+            flex: 1,
+            backgroundColor: theme.palette.primary.dark,
+            color: theme.palette.secondary.contrastText,
             fontFamily: 'monospace',
             p: theme.spacing(2),
+            maxHeight: '400px',
+            overflowY: 'auto',
+            ...customScrollbarStyles,
           }}
         >
           {workExperience.map((company, index) => (
@@ -140,7 +158,7 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ title }) => {
           ))}
         </Paper>
       </Box>
-    </Box>
+    </Container>
   );
 };
 
